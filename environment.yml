@@ -4,5 +4,6 @@ dependencies:
   - numpy
   - matplotlib
   - scipy
+  - ipympl
   
   
