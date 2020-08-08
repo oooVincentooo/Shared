@@ -1,5 +1,6 @@
 name: ipympl
-
+channels:
+  - conda-forge
 dependencies:
   - numpy
   - matplotlib-base>=3.2.2
