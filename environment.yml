@@ -1,9 +1,9 @@
-name: example-environment
+name: ipympl
 
 dependencies:
   - numpy
-  - matplotlib
+  - matplotlib-base>=3.2.2
   - scipy
-  - ipympl
+  - ipympl=0.5.7
   
   
