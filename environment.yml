@@ -4,7 +4,7 @@ channels:
 dependencies:
   - numpy
   - matplotlib-base>=2.2.2
-  - ipympl
+  - ipympl>=0.6.3
   - scipy
   - pandas
 
