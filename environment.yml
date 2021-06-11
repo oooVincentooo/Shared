@@ -3,8 +3,10 @@ channels:
   - conda-forge
 dependencies:
   - numpy
-  - matplotlib
-  - scipy
+  - matplotlib-base>=2.2.2
   - ipympl
+  - scipy
+  - pandas
+
   
   
