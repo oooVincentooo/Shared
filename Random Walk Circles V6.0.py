@@ -172,8 +172,8 @@ def single(n,steps,parray):
    
 
 def main():
-    n=1000000
-    steps=1000000
+    n=10000
+    steps=10000
     parray=[randomlist(2,steps),randomlist(3,steps),randomlist(4,steps),randomlist(5,steps),randomlist(6,steps)]
     videoloop(steps,parray)
     #single(n,steps,parray)  
