@@ -7,8 +7,8 @@ import fractions
 #from IPython import get_ipython
 #get_ipython().run_line_magic('matplotlib', 'qt5')
 
-#import matplotlib as mpl
-#mpl.rcParams['agg.path.chunksize'] = 10000
+import matplotlib as mpl
+mpl.rcParams['agg.path.chunksize'] = 10000
 
 fig= plt.figure(figsize=(30,9)) 
 
@@ -172,11 +172,11 @@ def single(n,steps,parray):
    
 
 def main():
-    n=10000
-    steps=10000
+    n=1000000
+    steps=1000000
     parray=[randomlist(2,steps),randomlist(3,steps),randomlist(4,steps),randomlist(5,steps),randomlist(6,steps)]
-    #videoloop(steps,parray)
-    single(n,steps,parray)  
+    videoloop(steps,parray)
+    #single(n,steps,parray)  
 
 main()     
 
