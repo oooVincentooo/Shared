@@ -4,8 +4,8 @@ import matplotlib.patches as patches
 import fractions
 
 #Open pyplot in separate interactive window
-#from IPython import get_ipython
-#get_ipython().run_line_magic('matplotlib', 'qt5')
+from IPython import get_ipython
+get_ipython().run_line_magic('matplotlib', 'qt5')
 
 import matplotlib as mpl
 mpl.rcParams['agg.path.chunksize'] = 10000
@@ -64,8 +64,8 @@ def plots(plot,p,n,steps,parray):
     xc=np.cumsum(x)
     yc=np.cumsum(y)
 
-    xd=np.diff(xc)
-    yd=np.diff(yc)
+    xd=np.diff(xc[:-1])
+    yd=np.diff(yc[:-1])
     dr=np.sqrt(xd**2+yd**2)
     circum=np.sum(dr)
 
@@ -143,14 +143,17 @@ def randomlist(p,steps):
 
 def videoloop(steps,parray):      
     d=1
-    for q in range(70):
+    for q in range(105):
         p=2
-        if (q+3)%10==0:
-            d=d*10
-            continue  
+        #if (q+3)%10==0:
+        #    d=d*10
+        #    continue  
 
-        n=(q+3)%10*d
+        #n=(q+3)%10*d
+        
+        n=int((10**(q*0.06)))
         print(n)
+        
     
         for i in range(5): 
             plotsetup(ax_list)
@@ -175,8 +178,8 @@ def main():
     n=10000
     steps=10000
     parray=[randomlist(2,steps),randomlist(3,steps),randomlist(4,steps),randomlist(5,steps),randomlist(6,steps)]
-    videoloop(steps,parray)
-    #single(n,steps,parray)  
+    #videoloop(steps,parray)
+    single(n,steps,parray)  
 
 main()     
 
