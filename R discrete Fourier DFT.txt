@@ -1,0 +1,97 @@
+https://stackoverflow.com/questions/40785142/bandpassfilter-r-using-fft
+
+
+setwd("C:/Temp/DFT Test")
+library(dplyr)
+
+df <- read.table("Data.txt",header = TRUE)
+
+
+DFT<-    function(y, samp.freq, ...){
+    N <- length(y)
+    fk <- fft(y)
+    fk <- fk[1:length(fk)/2+1]
+    fk <- 2*fk[seq(1, length(fk), by = 2)]
+    fk[1]<-fk[1]/2
+    a <- Mod(fk)/N
+    arg<-Arg(fk)
+    freq <- ((1:(length(fk)))-1)*samp.freq/N
+    time<-1/freq
+    return(data.frame(freq = freq, time=time, amplitude=a, phase=arg))
+}
+
+
+
+v<-df$sum
+fft<-DFT(v,1)
+write.csv(fft, "DFT.csv", row.names=TRUE, quote=FALSE) 
+
+
+
+
+
+
+
+
+    run<-filter(df,Run==1 & Richting=="vrnl")
+    v<-df$v
+    fft<-DFT(v,1)
+    write.csv(fft, "1.csv", row.names=TRUE, quote=FALSE) 
+
+
+ 
+    r<-1
+    run<-filter(df,Run==r & Richting=="vrnl")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"r.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-2
+    run<-filter(df,Run==r & Richting=="vrnl")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"r.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-3
+    run<-filter(df,Run==r & Richting=="vrnl")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"r.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-4
+    run<-filter(df,Run==r & Richting=="vrnl")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"r.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-1
+    run<-filter(df,Run==r & Richting=="vlnr")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"l.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-2
+    run<-filter(df,Run==r & Richting=="vlnr")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"l.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-3
+    run<-filter(df,Run==r & Richting=="vlnr")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"l.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
+
+    r<-4
+    run<-filter(df,Run==r & Richting=="vlnr")
+    v<-run$v
+    fft<-DFT(v,1)
+    file<-paste(r,"l.csv")
+    write.csv(fft, file, row.names=TRUE, quote=FALSE) 
