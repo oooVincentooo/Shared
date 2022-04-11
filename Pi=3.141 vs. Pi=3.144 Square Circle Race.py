@@ -29,8 +29,6 @@ ax.plot([0,0],[0,600], color='black', marker='o', linestyle='-',
      linewidth=1, markersize=0     ,zorder=-10           )
 ax.plot([-600,600],[0,0], color='lightgray', marker='o', linestyle='-',
      linewidth=1, markersize=0        ,zorder=-10             )
-
-
 ax.plot([0,0],[-600,0], color='lightgray', marker='o', linestyle='-',
      linewidth=1, markersize=0   ,zorder=-10    )
 
@@ -52,12 +50,12 @@ ax.add_patch(circle_aq)
 s=1000/np.sqrt((np.sqrt(5)+1)/2)
 rect = Rectangle((-np.sqrt(2)*s/2,0),s,s,linewidth=1,edgecolor='blue',facecolor='none', angle=-45)
 rect_circ = plt.Circle((0,10000+s/2),10, color='blue', fill=True)
-label_circ = ax0.scatter([10000], [10000], marker='o', s=100, facecolors='blue', edgecolors='blue', alpha=1.00, label=r"Curve: $dx/dy$")
+label_circ = ax0.scatter([10000], [10000], marker='o', s=100, facecolors='blue', edgecolors='blue', alpha=1.00, label=r"")
 
 
 rect_aq = plt.Circle((0,10000+s/2),10, color='blue', fill=False, alpha=0.25)
 label_aq_ani = ax0.scatter([10000], [10000], marker='o', s=100, facecolors='none', edgecolors='red', alpha=1.00, label=r"Circle:")
-label_aq = ax0.scatter([10000], [10000], marker='o', s=100, facecolors='none', edgecolors='blue', alpha=1, label=r"Linear: $\Delta x / \Delta y$")
+label_aq = ax0.scatter([10000], [10000], marker='o', s=100, facecolors='none', edgecolors='blue', alpha=1, label=r"Linear: $")
 
 
 # Add the patch to the Axes
@@ -80,41 +78,6 @@ print((rounds * (  (frames-1)*(interval/1000  )       )        ))
 #Set angular speeds standard and pi=3.144
 speed_circ=np.pi*2*500/( (  (frames-1)*(interval/1000  )       )        )
 speed_aq=pi_aq*2*500/(   ( (frames-1)*(interval/1000     )    )       )
-
-#Animation init
-def init():
-    ax.set_aspect('equal')
-    ax2.set_aspect('equal')
-    
-    ax2.set_facecolor("none")
-    ax0.set_facecolor("none")
-    ax0.axis('off')
-    ax2.axis('off') 
-    
-    #Size plot
-    ax.set_xlim(-600, 600)
-    ax.set_ylim(-600, 600)
-    ax0.set_xlim(0, 12)
-    ax0.set_ylim(12,0)
-    
-    
-    #plot finish line
-    ax.plot([0,0],[0,600], color='black', marker='o', linestyle='-',
-         linewidth=1, markersize=0     ,zorder=-10           )
-    ax.plot([-600,600],[0,0], color='lightgray', marker='o', linestyle='-',
-         linewidth=1, markersize=0        ,zorder=-10             )  
-    ax.plot([0,0],[-600,0], color='lightgray', marker='o', linestyle='-',
-         linewidth=1, markersize=0   ,zorder=-10    )    
-    
-    #Circle with radius 500    
-    circle= plt.Circle((0,0),500, color='red', fill=False)    
-    rect = Rectangle((-np.sqrt(2)*s/2,0),s,s,linewidth=1,edgecolor='blue',facecolor='none', angle=-45)
-    
-    legend = ax0.legend(loc='center right', edgecolor="none", fontsize=16,markerfirst=False)
-    
-    ax.add_patch(rect)    
-    ax.add_patch(circle)    
-    return rect_aq, rect_circ, circle_ani,timebox, legend,circle_aq
 
 #Animation loop 
 def update(frame):
@@ -158,12 +121,18 @@ def update(frame):
     
     return rect_aq, rect_circ, circle_ani,timebox, legend,circle_aq
 
-ID=np.linspace(0.01,rounds*2, frames)
+
+#No animation
+ID=np.linspace(rounds,rounds*2, frames)
+
+#With animation:
+#ID=np.linspace(0,rounds*2, frames)
+
 final=np.full(( int(15/(interval/1000) )         ),ID[-1])
 ID=np.append(ID, final)
 
 plt.tight_layout()
-anim = animation.FuncAnimation(fig, update, frames=ID, interval=interval, init_func=init, blit=True, repeat=False )
+anim = animation.FuncAnimation(fig, update, frames=ID, interval=interval, blit=True, repeat=False )
 
 #Save video
 #f = r"c://temp/500 s 60 fps 100 rounds Aquarian OOOVincentOOO.avi" 
