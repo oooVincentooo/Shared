@@ -123,7 +123,7 @@ def update(frame):
 
 
 #No animation
-ID=np.linspace(rounds,rounds*2, frames)
+ID=np.linspace(2*rounds,rounds*2, frames)
 
 #With animation:
 #ID=np.linspace(0,rounds*2, frames)
